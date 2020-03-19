@@ -1,6 +1,26 @@
+# Quick info
+
+Out of the box includes:
+
+* php 5.4 with Apache
+
+* MYSQL 5.5
+
+* phpmyadmin 4.4.15
+
+Put your files in your root project directory (where docker-compose.yml is). They will be linked through volume to /var/www/html/ in the Apache container.
+
+Your MYSQL data will be linked to some_db folder with volume to /var/lib/mysql/some_db in MYSQL container.
+
+# Quick setup for Docker Toolbox
+
+Change every instance of *your_path* in docker-compose.yml to you desired path. In my case, I set up this path in my Virtual Machine options.
+
 # docker-lamp-php-5
 
 Legacy Lamp docker server for old PHP projects.
+
+Also included: phpmyadmin:4.4.15 by dnhsoft from Docker Hub
 
 # Docker && docker-compose installation instructions:
 
