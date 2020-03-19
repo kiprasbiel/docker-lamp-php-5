@@ -2,17 +2,18 @@ version: '3.1'
 
 services:
   server:
+    restart: always
     build:
       context: .
       dockerfile: docker/Dockerfile
     container_name: server
     ports:
-      - 8080:80
+      - '8080:80'
     volumes:
-      - .:/var/www/docker-lamp-php-5
-      - ./logs/apache2:/var/log/apache2
+    - /*your_path*/:/var/www/html/
 
   db:
+    restart: always
     image: mysql:5.5
     container_name: mysql
     environment:
@@ -21,6 +22,20 @@ services:
       - MYSQL_USER=some_user
       - MYSQL_PASSWORD=some_password
     ports:
-      - 8306:3306
+      - '8306:3306'
     volumes:
-      - /var/lib/mysql/some_db:/var/lib/mysql/some_db
+      - /*your_path*/some_db:/var/lib/mysql/some_db
+  pma:
+    restart: always
+    image: dnhsoft/phpmyadmin:4.4.15
+    environment:
+      MYSQL_ROOT_PASSWORD: some_password
+      DBHOST: db
+      DBUSER: some_user
+      DBPASS: some_password
+    ports:
+    - '8000:80'
+    depends_on:
+      - db
+    links:
+      - db

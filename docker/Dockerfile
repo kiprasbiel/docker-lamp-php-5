@@ -1,5 +1,5 @@
 
-FROM php:5.5-apache
+FROM php:5.4-apache
 
 # Install PHP extension dependencies (if any)
 #RUN apt-get update \
@@ -35,4 +35,4 @@ RUN docker-php-ext-install pdo_mysql
 #RUN service apache2 restart
 
 # Set the workdir
-WORKDIR /var/www/docker-lamp-php-5
+WORKDIR /var/www
