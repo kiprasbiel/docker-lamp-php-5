@@ -17,6 +17,7 @@ RUN docker-php-ext-install mysql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
+RUN set -eux; apt-get update; apt-get install -y libzip-dev zlib1g-dev; docker-php-ext-install zip
 
 # Install PECL extensions
 #RUN docker-php-pecl-install <package_name-version> (versions available in PECL repository allowed)
